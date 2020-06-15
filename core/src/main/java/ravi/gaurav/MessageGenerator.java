@@ -1,0 +1,6 @@
+package ravi.gaurav;
+
+public interface MessageGenerator {
+    String getMainMessage();
+    String getResultMessage();
+}
