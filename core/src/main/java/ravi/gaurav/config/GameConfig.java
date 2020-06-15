@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import ravi.gaurav.GuessCount;
 import ravi.gaurav.MaxNumber;
+import ravi.gaurav.MinNumber;
 
 @Configuration
 @PropertySource("classpath:config/game.properties")
@@ -18,6 +19,9 @@ public class GameConfig {
     @Value("${game.guessCount:5}")
     private int guessCount;
 
+    @Value("${game.minNumber:9}")
+    private int minNumber;
+
     @Bean
     @MaxNumber
     public int maxNumber() {
@@ -28,5 +32,11 @@ public class GameConfig {
     @GuessCount
     public int guessCount() {
         return guessCount;
+    }
+
+    @Bean
+    @MinNumber
+    public int minNumber() {
+        return minNumber;
     }
 }

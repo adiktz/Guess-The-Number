@@ -36,11 +36,10 @@ public class ConsoleNumberGuess {
             if (game.isGameWon() || game.isGameLost()) {
                 System.out.println(messageGenerator.getResultMessage());
                 System.out.println("Play again y/n");
-                String playAgainString = scanner.nextLine().trim();
-                if (!playAgainString.equalsIgnoreCase("y")) {
-                    break;
-                }
-                game.reset();
+                String playAgainString = scanner.nextLine();
+                if (playAgainString.equalsIgnoreCase("y")){
+                    game.reset();
+                } else break;
             }
         }
     }
