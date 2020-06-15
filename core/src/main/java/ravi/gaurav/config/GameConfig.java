@@ -2,6 +2,7 @@ package ravi.gaurav.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import ravi.gaurav.GuessCount;
@@ -10,6 +11,7 @@ import ravi.gaurav.MinNumber;
 
 @Configuration
 @PropertySource("classpath:config/game.properties")
+@ComponentScan(basePackages = "ravi.gaurav")
 public class GameConfig {
 
     // Fields
