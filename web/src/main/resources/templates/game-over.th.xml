@@ -2,6 +2,10 @@
     <attr sel="#headId" th:replace="~{fragments/head :: headFragment}"/>
     <attr sel="#footerId" th:replace="~{fragments/footer :: footer}"/>
     <attr sel="#resultMessageId" th:text="${__${T(ravi.gaurav.web.util.AttributeNames).RESULT_MESSAGE}__}"/>
-    <attr sel="#restartId" th:href="@{__${T(ravi.gaurav.web.util.GameMappings).RESTART}__}"/>
-    <attr sel="#homeLinkId" th:href="@{__${T(ravi.gaurav.web.util.GameMappings).HOME}__}"/>
+    <attr sel="#restartId" th:href="@{__${T(ravi.gaurav.web.util.GameMappings).RESTART}__}"
+          th:text="#{game.play}"/>
+    <attr sel="#homeLinkId" th:href="@{__${T(ravi.gaurav.web.util.GameMappings).HOME}__}"
+          th:text="#{game.home}"/>
+    <attr sel="#game-title" th:text="#{game.title}"/>
+    <attr sel="#game-over" th:text="#{game.over}"/>
 </thlogic>

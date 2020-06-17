@@ -2,6 +2,8 @@ package ravi.gaurav;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,11 +12,14 @@ import javax.annotation.PostConstruct;
 @Component
 public class MessageGeneratorImpl implements MessageGenerator {
 
+    private static final String MAIN_MESSAGE = "game.main.message";
     private final Game game;
+    private final MessageSource messageSource;
 
     @Autowired
-    public MessageGeneratorImpl(Game game) {
+    public MessageGeneratorImpl(Game game, MessageSource messageSource) {
         this.game = game;
+        this.messageSource = messageSource;
     }
 
     @PostConstruct
@@ -25,11 +30,13 @@ public class MessageGeneratorImpl implements MessageGenerator {
 
     @Override
     public String getMainMessage() {
-        return "Number is between " +
+        return getMessage(MAIN_MESSAGE, game.getSmallest(), game.getBiggest());
+
+        /*return "Number is between " +
                 game.getSmallest() +
                 " and " +
                 game.getBiggest() +
-                ". Can you guess it?";
+                ". Can you guess it?";*/
     }
 
     @Override
@@ -49,5 +56,9 @@ public class MessageGeneratorImpl implements MessageGenerator {
             }
             return direction + "! You have " + game.getRemainingGuesses() + " guesses left.";
         }
+    }
+
+    private String getMessage(String code, Object... args) {
+        return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
     }
 }
