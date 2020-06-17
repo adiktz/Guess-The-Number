@@ -1,3 +1,4 @@
 <thlogic xmlns:th="http://www.thymeleaf.org">
     <attr sel="#footer" th:fragment="footer"/>
+    <attr sel="#created-by" th:text="|#{game.createdBy} Gaurav Ravi|"/>
 </thlogic>
